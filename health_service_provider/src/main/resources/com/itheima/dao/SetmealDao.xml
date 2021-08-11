@@ -37,7 +37,7 @@
         (#{code},#{name},#{sex},#{helpCode},#{remark},#{attention},#{age},#{price},#{img})
     </insert>
 
-    <!--设置套餐和检查组多对多关系-->
+    <!--设置套餐和检查组多对多关系！！！-->
     <insert id="setSetmealAndCheckGroup" parameterType="map">
         insert into t_setmeal_checkgroup(setmeal_id,checkgroup_id)
         values

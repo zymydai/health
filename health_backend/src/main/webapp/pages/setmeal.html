@@ -253,7 +253,7 @@
                 //文件上传成功后的钩子，response为服务端返回的值，file为当前上传的文件封装成的js对象
                 handleAvatarSuccess(response, file) {
                     //为模型数据imageUrl赋值，用于页面图片预览
-                    this.imageUrl = 'http://psyrcmf27.bkt.clouddn.com/' + response.data;
+                    this.imageUrl = 'https://dai-img.oss-cn-beijing.aliyuncs.com/' + response.data;
                     this.$message({
                         type:response.flag ? 'success':'error',
                         message:response.message

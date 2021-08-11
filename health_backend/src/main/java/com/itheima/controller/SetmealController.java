@@ -8,6 +8,7 @@ import com.itheima.entity.QueryPageBean;
 import com.itheima.entity.Result;
 import com.itheima.pojo.Setmeal;
 import com.itheima.service.SetmealService;
+import com.itheima.utils.AliCouldUtils;
 import com.itheima.utils.QiniuUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,7 +42,9 @@ public class SetmealController {
         String fileName = UUID.randomUUID().toString() + extention;//	FuM1Sa5TtL_ekLsdkYWcf5pyjKGu.jpg
         try {
             //将文件上传到七牛云服务器
-            QiniuUtils.upload2Qiniu(imgFile.getBytes(),fileName);
+            // QiniuUtils.upload2Qiniu(imgFile.getBytes(),fileName);
+            //上传到阿里服务器
+            AliCouldUtils.uploadAli(imgFile.getBytes(),fileName);
             jedisPool.getResource().sadd(RedisConstant.SETMEAL_PIC_RESOURCES,fileName);
         } catch (IOException e) {
             e.printStackTrace();
