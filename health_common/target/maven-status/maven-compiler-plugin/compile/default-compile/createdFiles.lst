@@ -1,4 +1,5 @@
 com\itheima\pojo\Role.class
+com\itheima\utils\DateUtils.class
 com\itheima\pojo\CheckItem.class
 com\itheima\pojo\User.class
 com\itheima\constant\RedisMessageConstant.class
@@ -15,6 +16,7 @@ com\itheima\constant\RedisConstant.class
 com\itheima\utils\SMSUtils.class
 com\itheima\pojo\Member.class
 com\itheima\pojo\Order.class
+com\itheima\utils\MD5Utils.class
 com\itheima\utils\ValidateCodeUtils.class
 com\itheima\entity\QueryPageBean.class
 com\itheima\pojo\Menu.class

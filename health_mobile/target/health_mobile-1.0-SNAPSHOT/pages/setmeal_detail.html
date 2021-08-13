@@ -37,16 +37,16 @@
                 <p class="subtit">{{setmeal.remark}}</p>
                 <p class="keywords">
                     <span>{{setmeal.sex == '0' ? '性别不限' : setmeal.sex == '1' ? '男':'女'}}</span>
-                    <span>{{setmeal.age}}</span>
+                    <span>""{{setmeal.age}}""</span>
                 </p>
             </div>
-            <!--<div class="project-know">
+            <div class="project-know">
                 <a href="orderNotice.html" class="link-page">
                     <i class="icon-ask-circle"><span class="path1"></span><span class="path2"></span></i>
                     <span class="word">预约须知</span>
                     <span class="arrow"><i class="icon-rit-arrow"></i></span>
                 </a>
-            </div>-->
+            </div>
         </div>
         <div class="table-listbox">
             <div class="box-title">
@@ -96,7 +96,7 @@
             axios.post("/setmeal/findById.do?id=" + id).then((response) => {
                 if(response.data.flag){
                     this.setmeal = response.data.data;
-                    this.imgUrl = 'http://psyrcmf27.bkt.clouddn.com/' + this.setmeal.img;
+                    this.imgUrl = 'https://dai-img.oss-cn-beijing.aliyuncs.com/' + this.setmeal.img;
                 }
             });
         }

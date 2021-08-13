@@ -60,4 +60,8 @@
     <select id="findById" parameterType="int" resultMap="findByIdResultMap">
         select * from t_setmeal where id = #{id}
     </select>
+
+    <delete id="deleteById" parameterType="int">
+        delete * from t_setmeal where id = #{id}
+    </delete>
 </mapper>

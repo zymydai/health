@@ -20,6 +20,7 @@
           <element id="archive" name="health_common-1.0-SNAPSHOT.jar">
             <element id="module-output" name="health_common" />
           </element>
+          <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.23" />
           <element id="library" level="project" name="Maven: com.aliyun.oss:aliyun-sdk-oss:3.10.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.4.1" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpcore:4.4.1" />

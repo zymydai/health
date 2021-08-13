@@ -73,4 +73,17 @@ public class SetmealController {
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
         return setmealService.pageQuery(queryPageBean);
     }
+
+    //删除组
+    @RequestMapping("/delete")
+    public Result delete(Integer id){
+        try{
+            setmealService.deleteById(id);
+        }catch (Exception e){
+            e.printStackTrace();
+            //服务调用失败
+            return new Result(false, "删除失败");
+        }
+        return  new Result(true, "删除成功");
+    }
 }

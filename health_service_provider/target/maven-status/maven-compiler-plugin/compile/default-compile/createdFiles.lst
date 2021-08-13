@@ -4,5 +4,6 @@ com\itheima\service\impl\SetmealServiceImpl.class
 com\itheima\dao\CheckItemDao.class
 com\itheima\service\impl\OrderSettingServiceImpl.class
 com\itheima\dao\SetmealDao.class
+com\itheima\service\impl\OrderServiceImpl.class
 com\itheima\service\impl\CheckItemServiceImpl.class
 com\itheima\dao\OrderSettingDao.class

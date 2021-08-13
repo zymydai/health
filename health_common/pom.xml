@@ -11,6 +11,11 @@
 
     <artifactId>health_common</artifactId>
     <dependencies>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.23</version>
+        </dependency>
         <!--阿里云 -->
         <dependency>
             <groupId>com.aliyun.oss</groupId>
