@@ -79,14 +79,14 @@
                 //登录
                 login(){
                     var telephone = this.loginInfo.telephone;
-                    if (!checkTelephone(telephone)) {
-                        this.$message.error('请输入正确的手机号');
-                        return false;
-                    }
-                    axios.post("/login/check.do",this.loginInfo).then((response) => {
+                    // if (!checkTelephone(telephone)) {
+                    //     this.$message.error('请输入正确的手机号');
+                    //     return false;
+                    // }
+                    axios.post("/member/login.do",this.loginInfo).then((response) => {
                         if(response.data.flag){
-                            //登录成功,跳转到index.html
-                            window.location.href="index.html";
+                            //登录成功,跳转到会员页面
+                            window.location.href="member.html";
                         }else{
                             //失败，提示失败信息
                             this.$message.error(response.data.message);

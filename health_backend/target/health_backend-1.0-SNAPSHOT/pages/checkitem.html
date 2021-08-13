@@ -351,17 +351,26 @@
                                 });
                                 //重新进行分页查询
                                 this.findPage();
-                            }else{
-                                //执行失败
-                                this.$message.error(res.data.message);
                             }
+
+                            }).catch((r)=>{
+                            this.showMessage(r);
                         });
-                    }).catch(()=>{
-                        this.$message({
-                            type:'info',
-                            message:'操作已取消'
-                        });
+                    }).catch(()=> {
+                        //点击取消按钮执行此代码
+                        this.$message('操作已取消');
                     });
+                }
+            },
+            //权限不足提示
+            showMessage(r){
+                if(r == 'Error: Request failed with status code 403'){
+                    //权限不足
+                    this.$message.error('无访问权限');
+                    return;
+                }else{
+                    this.$message.error('未知错误');
+                    return;
                 }
             }
         })

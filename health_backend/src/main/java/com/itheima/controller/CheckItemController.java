@@ -7,6 +7,7 @@ import com.itheima.entity.QueryPageBean;
 import com.itheima.entity.Result;
 import com.itheima.pojo.CheckItem;
 import com.itheima.service.CheckItemService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class CheckItemController {
     private CheckItemService checkItemService;
 
     //新增检查项
+    @PreAuthorize("hasAuthority('CHECKITEM_QUERY')")//权限校验
     @RequestMapping("/add")
     public Result add(@RequestBody CheckItem checkItem){
         try{
@@ -46,6 +48,7 @@ public class CheckItemController {
 
     //删除检查项
     @RequestMapping("/delete")
+    @PreAuthorize("hasAuthority('CHECKITEM_DELETE')")//权限校验
     public Result delete(Integer id){
         try{
             checkItemService.deleteById(id);

@@ -64,4 +64,11 @@
     <delete id="deleteById" parameterType="int">
         delete * from t_setmeal where id = #{id}
     </delete>
+
+    <select id="findSetmealCount" resultType="map">
+          select s.name,count(o.id) as value
+            from t_order o ,t_setmeal s
+            where o.setmeal_id = s.id
+            group by s.name
+    </select>
 </mapper>
