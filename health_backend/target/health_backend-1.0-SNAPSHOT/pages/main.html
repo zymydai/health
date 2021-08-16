@@ -70,7 +70,7 @@
                     </el-menu>
                 </el-aside>
                 <el-container>
-                    <iframe name="right" class="el-main" src="report_member.html" width="100%" height="580px" frameborder="0"></iframe>
+                    <iframe name="right" class="el-main" src="report_setmeal.html" width="100%" height="580px" frameborder="0"></iframe>
                 </el-container>
             </el-container>
         </el-container>
@@ -173,8 +173,20 @@
                     "children":[//是否有子菜单，若没有，则为[]
                         {
                             "path": "/5-1",
-                            "title": "工作量统计",
-                            "linkUrl":"all-medical-list.html",
+                            "title": "会员数量统计",
+                            "linkUrl":"report_member.html",
+                            "children":[]
+                        },
+                        {
+                            "path": "/5-2",
+                            "title": "套餐预约统计",
+                            "linkUrl":"report_setmeal.html",
+                            "children":[]
+                        },
+                        {
+                            "path": "/5-3",
+                            "title": "运营数据统计",
+                            "linkUrl":"report_business.html",
                             "children":[]
                         }
                     ]

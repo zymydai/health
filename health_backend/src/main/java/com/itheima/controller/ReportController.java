@@ -3,15 +3,17 @@ package com.itheima.controller;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.itheima.constant.MessageConstant;
 import com.itheima.entity.Result;
-import com.itheima.pojo.Setmeal;
 import com.itheima.service.MemberService;
 import com.itheima.service.ReportService;
 import com.itheima.service.SetmealService;
-import com.itheima.utils.DateUtils;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.ServletOutputStream;
@@ -19,7 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -176,6 +177,42 @@ public class ReportController {
             return null;
         }catch (Exception e){
             return new Result(false, MessageConstant.GET_BUSINESS_REPORT_FAIL,null);
+        }
+    }
+
+    //导出运营数据到pdf并提供客户端下载
+    @RequestMapping("/exportBusinessReport4PDF")
+    public Result exportBusinessReport4PDF(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            Map<String, Object> result = reportService.getBusinessReport();
+
+            //取出返回结果数据，准备将报表数据写入到PDF文件中
+            List<Map> hotSetmeal = (List<Map>) result.get("hotSetmeal");
+
+            //动态获取模板文件绝对磁盘路径
+            String jrxmlPath =
+                    request.getSession().getServletContext().getRealPath("template") + File.separator + "health_business3.jrxml";
+            String jasperPath =
+                    request.getSession().getServletContext().getRealPath("template") + File.separator + "health_business3.jasper";
+            //编译模板
+            JasperCompileManager.compileReportToFile(jrxmlPath, jasperPath);
+
+            //填充数据---使用JavaBean数据源方式填充
+            JasperPrint jasperPrint =
+                    JasperFillManager.fillReport(jasperPath,result,
+                            new JRBeanCollectionDataSource(hotSetmeal));
+
+            ServletOutputStream out = response.getOutputStream();
+            response.setContentType("application/pdf");
+            response.setHeader("content-Disposition", "attachment;filename=report.pdf");
+
+            //输出文件
+            JasperExportManager.exportReportToPdfStream(jasperPrint,out);
+
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, MessageConstant.GET_BUSINESS_REPORT_FAIL);
         }
     }
 }

@@ -11,6 +11,13 @@
 
     <artifactId>health_common</artifactId>
     <dependencies>
+        <!--pdf生成-->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.8.0</version>
+        </dependency>
+        <!--静态页面生成-->
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>

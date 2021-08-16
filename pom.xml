@@ -39,6 +39,11 @@
     <!-- 依赖管理标签  必须加 -->
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.lowagie</groupId>
+                <artifactId>itext</artifactId>
+                <version>2.1.7</version>
+            </dependency>
             <!--Spring Security-->
             <dependency>
                 <groupId>org.springframework.security</groupId>
